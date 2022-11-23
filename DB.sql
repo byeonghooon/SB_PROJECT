@@ -57,7 +57,7 @@ loginPw = 'admin',
 `name` = '관리자', 
 nickname = '관리자',
 cellphoneNum = '01012341234',
-email = 'axdsw121@gmail.com';
+email = 'orangeys1000@gmail.com';
 
 # 회원 테스트데이터 생성 (일반)
 INSERT INTO `member` 
@@ -68,7 +68,7 @@ loginPw = 'test1',
 `name` = '사용자1', 
 nickname = '사용자1',
 cellphoneNum = '01043214321',
-email = 'axdsw121@gmail.com';
+email = 'orangeys1000@gmail.com';
 
 INSERT INTO `member` 
 SET regDate = NOW(),
@@ -78,7 +78,7 @@ loginPw = 'test2',
 `name` = '사용자2', 
 nickname = '사용자2',
 cellphoneNum = '01067896789',
-email = 'axdsw121@gmail.com';
+email = 'orangeys1000@gmail.com';
 
 # 게시물 테이블에 회원번호 칼럼 추가
 ALTER TABLE article ADD COLUMN memberId INT(10) UNSIGNED NOT NULL AFTER `updateDate`;
@@ -285,6 +285,13 @@ ALTER TABLE `attr` ADD INDEX (`relTypeCode`, `typeCode`, `type2Code`);
 # attr에 만료날짜 추가
 ALTER TABLE `attr` ADD COLUMN `expireDate` DATETIME NULL AFTER `value`;
 
+# 회원 테이블의 로그인 비밀번호의 길이를 100으로 늘림
+ALTER TABLE `member` MODIFY COLUMN loginPw VARCHAR(100) NOT NULL;
+
+# 기존 회원의 비밀번호를 암호화 
+UPDATE `member`
+SET loginPw = SHA2(loginPw, 256);
+
 #######################################################
 
 SELECT * FROM attr;
@@ -296,6 +303,8 @@ SELECT * FROM reactionPoint;
 DESC article;
 
 SELECT * FROM article;
+
+SELECT * FROM `member`;
 
 SELECT LAST_INSERT_ID();
 
@@ -378,3 +387,5 @@ FROM reply AS R
 LEFT JOIN `member` AS M
 ON R.memberId = M.id
 WHERE R.id = 3
+
+SELECT SHA2('Hello',256)

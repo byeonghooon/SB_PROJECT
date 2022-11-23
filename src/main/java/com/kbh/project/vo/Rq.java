@@ -194,4 +194,19 @@ public class Rq {
 	public String getArticleDetailUriFromArticleList(Article article) {
 		return "../article/detail?id=" + article.getId() + "&listUri=" + getEncodedCurrentUri();
 	}
+	public String getFindLoginIdUri() {
+		return "../member/findLoginId?afterFindLoginIdUri=" + getAfterFindLoginIdUri();
+	}
+
+	public String getFindLoginPwUri() {
+		return "../member/findLoginPw?afterFindLoginPwUri=" + getAfterFindLoginPwUri();
+	}
+
+	public String getAfterFindLoginIdUri() {
+		return getEncodedCurrentUri();
+	}
+
+	public String getAfterFindLoginPwUri() {
+		return getEncodedCurrentUri();
+	}
 }

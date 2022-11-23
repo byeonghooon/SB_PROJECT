@@ -8,6 +8,7 @@
 	let MemberModify__submitDone = false;
 	function MemberModify__submit(form) {
 		if (MemberModify__submitDone) {
+			alert('처리중입니다');
 			return;
 		}
 		form.loginPw.value = form.loginPw.value.trim();
