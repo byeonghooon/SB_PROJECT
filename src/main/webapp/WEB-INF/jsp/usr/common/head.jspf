@@ -28,7 +28,7 @@
 	<header>
 		<div class="header h-20 flex container mx-auto text text-4xl">
 			<a href="/" class="flex items-center px-3">
-				<img  width="130" src="http://newsimg.hankookilbo.com/2019/09/04/201909040939339850_2.jpg" />
+				<img  width="60" src="https://url.kr/icm8ph" />
 			</a>
 
 			<div class="flex-grow"></div>

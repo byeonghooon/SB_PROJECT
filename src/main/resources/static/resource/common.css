@@ -74,6 +74,6 @@ html>body, html>body .toast-ui-editor, html>body .toastui-editor-contents,
 	z-index: 10;
 }
 .header{
-	background-color: brown;
-	color: white;
+	background-color: #350012;
+	color: gray;
 }
