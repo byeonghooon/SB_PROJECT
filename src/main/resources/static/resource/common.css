@@ -19,7 +19,7 @@ html>body, html>body .toast-ui-editor, html>body .toastui-editor-contents,
 }
 
 .table-box-type-1 th, .table-box-type-1 td {
-	border: 1px solid black;
+	border: 1px solid rgba(31, 41, 55, 0.2);
 	padding: 10px;
 	text-align: center;
 }
