@@ -150,11 +150,11 @@ public class Rq {
 	}
 
 	public String getJoinUri() {
-		return "../member/join?afterLoginUri=" + getAfterLoginUri();
+		return "/usr/member/join?afterLoginUri=" + getAfterLoginUri();
 	}
 
 	public String getLoginUri() {
-		return "../member/login?afterLoginUri=" + getAfterLoginUri();
+		return "/usr/member/login?afterLoginUri=" + getAfterLoginUri();
 
 	}
 
@@ -165,10 +165,10 @@ public class Rq {
 		switch (requestUri) {
 		case "/usr/article/write":
 		case "/usr/article/modify":
-			return "../member/doLogout?afterLogoutUri=" + "/";
+			return "/usr/member/doLogout?afterLogoutUri=" + "/";
 		}
 
-		return "../member/doLogout?afterLogoutUri=" + getAfterLogoutUri();
+		return "/usr/member/doLogout?afterLogoutUri=" + getAfterLogoutUri();
 
 	}
 
@@ -208,5 +208,12 @@ public class Rq {
 
 	public String getAfterFindLoginPwUri() {
 		return getEncodedCurrentUri();
+	}
+	public boolean isAdmin() {
+		if (isLogined == false) {
+			return false;
+		}
+
+		return loginedMember.isAdmin();
 	}
 }

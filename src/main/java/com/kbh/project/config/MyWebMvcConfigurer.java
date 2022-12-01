@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.kbh.project.interceptor.BeforeActionInterceptor;
+import com.kbh.project.interceptor.NeedAdminInterceptor;
 import com.kbh.project.interceptor.NeedLoginInterceptor;
 import com.kbh.project.interceptor.NeedLogoutInterceptor;
 
@@ -20,6 +21,8 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 	NeedLoginInterceptor needLoginInterceptor;
 	@Autowired
 	NeedLogoutInterceptor needLogoutInterceptor;
+	@Autowired
+	NeedAdminInterceptor needAdminInterceptor;
 
 	// 인터셉터 적용
 	@Override
@@ -52,7 +55,14 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 		ir.addPathPatterns("/usr/reactionPoint/doBadReaction");
 		ir.addPathPatterns("/usr/reactionPoint/doCancelGoodReaction");
 		ir.addPathPatterns("/usr/reactionPoint/doCancelBadReaction");
-		
+		ir.addPathPatterns("/adm/**");
+		ir.addPathPatterns("/adm/member/login");
+		ir.addPathPatterns("/adm/member/doLogin");
+		ir.addPathPatterns("/adm/member/findLoginId");
+		ir.addPathPatterns("/adm/member/doFindLoginId");
+		ir.addPathPatterns("/adm/member/findLoginPw");
+		ir.addPathPatterns("/adm/member/doFindLoginPw");
+
 		ir = registry.addInterceptor(needLogoutInterceptor);
 		ir.addPathPatterns("/usr/member/login");
 		ir.addPathPatterns("/usr/member/doLogin");
@@ -63,7 +73,15 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 		ir.addPathPatterns("/usr/member/doFindLoginId");
 		ir.addPathPatterns("/usr/member/findLoginPw");
 		ir.addPathPatterns("/usr/member/doFindLoginPw");
+		
+		ir = registry.addInterceptor(needAdminInterceptor);
+		ir.addPathPatterns("/adm/**");
+		ir.addPathPatterns("/adm/member/login");
+		ir.addPathPatterns("/adm/member/doLogin");
+		ir.addPathPatterns("/adm/member/findLoginId");
+		ir.addPathPatterns("/adm/member/doFindLoginId");
+		ir.addPathPatterns("/adm/member/findLoginPw");
+		ir.addPathPatterns("/adm/member/doFindLoginPw");
 	}
-	
 
 }
